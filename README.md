@@ -1,7 +1,7 @@
 Forcing SSL with nginx in AWS EB
 ================================
 
-Sandbox for testing nginx configs without having to actually deploy.
+Sandbox for testing nginx configs behind an Elastic Load Balancer without having to actually deploy to AWS.
 
 ## Goals
 
@@ -17,8 +17,8 @@ In your vagrant, boot2docker, docker machine, etc, edit /etc/hosts:
 127.0.0.1 force-ssl.com www.force-ssl.com force-ssl.staging.com force-ssl.ci.com
 ```
 
-The elb container hosts the reverse proxy that terminates SSL and sets X-Forwarded-Proto.
-The app container is the proxied app.
+The elb container hosts the reverse proxy (ELB) that terminates SSL and sets the X-Forwarded-Proto header.
+The app container is the proxied app running nginx (passenger).
 
 ## Linking and running the containers
 
