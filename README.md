@@ -23,8 +23,9 @@ The app container is the proxied app.
 ## Linking and running the containers
 
 ```
-docker build -t app . && 
-docker run -p 8088:8088 --name app -d  app && 
+docker build -t elb ./elb
+docker build -t app ./app
+docker run -p 8088:8088 --name app -d  app
 docker run -d -p 8080:8080 -p 8443:8443 --name elb --link app:app elb 
 ```
 
